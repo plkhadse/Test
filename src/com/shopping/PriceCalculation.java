@@ -3,20 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PriceCalculation {
-	public static void main(String args[]) { 
-		
-		PriceCalculation priceCal = new PriceCalculation();
-		try{ 
-			List<FruitPurchase> purchaseItems = priceCal.doShopping();
-			Float totalCost = priceCal.getShoppingCost(purchaseItems);
-			System.out.println("Total Payment = "+ totalCost);
-		}catch(Exception e){
-			System.out.println("Error occured while shopping "+ e);
-		}
-		
-	}
 	 
-	private List<FruitPurchase> doShopping(){
+	public List<FruitPurchase> doShopping(){
 	
 		List<FruitPurchase> cart = new ArrayList<FruitPurchase>();
 		FruitPurchase bananas = new FruitPurchase("Bananas", 6, 2.25F);
@@ -35,10 +23,15 @@ public class PriceCalculation {
 	
 	public float getShoppingCost(List<FruitPurchase> purchaseItems ){
 		float totalCost = 0.0F; 
-		for (FruitPurchase item : purchaseItems) { 		      
-			totalCost = totalCost + item.getFruitCost();
-	      }
-		 
+			try{ 
+				for (FruitPurchase item : purchaseItems) { 		      
+					totalCost = totalCost + item.getFruitCost();
+			    }
+			}catch(Exception e){
+				System.out.println("Error occured while calculatting shopping cost "+ e);
+			}
+		System.out.println("Total Payment = "+ totalCost); 
+		
 		return totalCost;
 	}
 }

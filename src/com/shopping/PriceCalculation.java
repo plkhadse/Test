@@ -27,11 +27,10 @@ public class PriceCalculation {
 				for (FruitPurchase item : purchaseItems) { 		      
 					totalCost = totalCost + item.getFruitCost();
 			    }
-			}catch(Exception e){
-				System.out.println("Error occured while calculatting shopping cost "+ e);
+			}catch(Exception ex){
+				throw new RuntimeException(ex.getMessage());
 			}
-		System.out.println("Total Payment = "+ totalCost); 
-		
+		 
 		return totalCost;
 	}
 }

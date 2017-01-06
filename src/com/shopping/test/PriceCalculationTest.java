@@ -13,14 +13,14 @@ public class PriceCalculationTest {
          
 		PriceCalculation priceCal = new PriceCalculation();
 		List<FruitPurchase> purchaseItems = priceCal.doShopping();
-		 
+		assertNotNull(purchaseItems);
+
 		Float totalCost = priceCal.getShoppingCost(purchaseItems);
+		assertNotNull(totalCost);
 		
         Float expCost = 36.18F;
-        
         assertEquals(expCost, totalCost);
+        
     }
-    
- 
 
 }
